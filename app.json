@@ -1,13 +1,13 @@
 {
   "name": "Your App Name",
   "description": "A brief description of your app",
-  "repository": "https://github.com/melodic456/heroku_node_test",
-  "keywords": ["node", "worker", "heroku"],
+  "repository": "https://github.com/melodic456/binance_api_mongo",
+  "keywords": ["node", "heroku"],
   "scripts": {
     "start": "node index.js"
   },
   "formation": {
-    "worker": {
+    "web": {
       "quantity": 1
     }
   },
