@@ -5,7 +5,7 @@ const db = require('./db');
 const api = require('./api');
 
 const app = express();
-const port = 80;
+const port = 3000;
 
 app.use(express.json());
 app.use(cors()); // Enable CORS to allow cross-origin requests
